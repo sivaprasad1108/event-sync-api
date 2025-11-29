@@ -106,7 +106,7 @@ SMTP_HOST=smtp.example.com
 SMTP_PORT=587
 SMTP_USER=your-email-username
 SMTP_PASS=your-email-password
-EMAIL_FROM=no-reply@example.com
+EMAIL_FROM=no-reply@airtribe.com
 ```
 
 - If no SMTP configuration is provided, the app falls back to Ethereal (a test SMTP service) for local development and tests.
@@ -141,7 +141,7 @@ npm test
 ```
 
 Notes:
-- Tests run in a Node environment and use `src/tests/setup.js` to reset the in-memory stores before each test.
+- Tests run in a Node environment and use `tests/setup.js` to reset the in-memory stores before each test.
 - Email sending is mocked in tests to avoid reliance on real SMTP.
 
 ---
@@ -170,7 +170,7 @@ All endpoints are mounted under `/api` (e.g. `/api/register`).
 Request:
 
 ```bash
-curl -X POST http://localhost:4000/api/register -H 'Content-Type: application/json' -d '{"name":"Alice","email":"alice@example.com","password":"password","role":"organizer"}'
+curl -X POST http://localhost:4000/api/register -H 'Content-Type: application/json' -d '{"name":"Alice","email":"alice@airtribe.com","password":"password","role":"organizer"}'
 ```
 
 Response (201):
@@ -179,8 +179,8 @@ Response (201):
 {
   "user": {
     "id": "uuid",
-    "name": "Alice",
-    "email": "alice@example.com",
+    "name": "sivaprasad",
+    "email": "sivaprasad@airtribe.com",
     "role": "organizer",
     "createdAt": "2025-01-01T12:34:56.789Z"
   },
@@ -193,14 +193,14 @@ Response (201):
 Request:
 
 ```bash
-curl -X POST http://localhost:4000/api/login -H 'Content-Type: application/json' -d '{"email":"alice@example.com","password":"password"}'
+curl -X POST http://localhost:4000/api/login -H 'Content-Type: application/json' -d '{"email":"alice@airtribe.com","password":"password"}'
 ```
 
 Response (200):
 
 ```json
 {
-  "user": { "id":"...", "email":"alice@example.com", "name":"Alice", "role":"organizer", "createdAt":"..." },
+  "user": { "id":"...", "email":"sivaprasad@airtribe.com", "name":"sivaprasad", "role":"organizer", "createdAt":"..." },
   "token": "<jwt-token>"
 }
 ```
@@ -314,8 +314,9 @@ This project is available under the MIT License.
 
 ## Submission Notes
 
-- The repository contains all required endpoints and tests, and a `context.md` describing requirements.
+- The repository contains all required endpoints and tests,
 - All tests should pass with `npm test` after installing dependencies.
 
-If you have any questions or want improvements (e.g., adding CI or integrating a DB), let me know and I can implement them next.
+Have ideas for improvements (like adding CI/CD, migrating to a real database, or expanding features)? I’d love your feedback — reach me anytime at: siva47tv@gmail.com
+
 # event-sync-api

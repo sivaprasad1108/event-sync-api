@@ -3,7 +3,7 @@ const app = require('../src/app');
 
 describe('Events API', () => {
   test('Organizer can create event', async () => {
-    const email = `org-create-${Date.now()}@example.com`;
+    const email = `org-create-${Date.now()}@airtribe.com`;
     const reg = await request(app).post('/api/register').send({ name: 'Org', email, password: 'pass', role: 'organizer' });
     expect(reg.status).toBe(201);
     const token = reg.body.token;
@@ -19,7 +19,7 @@ describe('Events API', () => {
   });
 
   test('Attendee cannot create event', async () => {
-    const email = `att-create-${Date.now()}@example.com`;
+    const email = `att-create-${Date.now()}@airtribe.com`;
     const reg = await request(app).post('/api/register').send({ name: 'Att', email, password: 'pass', role: 'attendee' });
     const token = reg.body.token;
 
@@ -34,7 +34,7 @@ describe('Events API', () => {
 
   test('Get events list', async () => {
     // Ensure there is at least one event
-    const email = `org-list-${Date.now()}@example.com`;
+    const email = `org-list-${Date.now()}@airtribe.com`;
     const reg = await request(app).post('/api/register').send({ name: 'Org2', email, password: 'pass', role: 'organizer' });
     const token = reg.body.token;
     await request(app).post('/api/events').set('Authorization', `Bearer ${token}`).send({ title: 'E1', description: 'D1', dateTime: new Date().toISOString() });
@@ -46,7 +46,7 @@ describe('Events API', () => {
   });
 
   test('Update event by organizer', async () => {
-    const email = `org-update-${Date.now()}@example.com`;
+    const email = `org-update-${Date.now()}@airtribe.com`;
     const reg = await request(app).post('/api/register').send({ name: 'Org3', email, password: 'pass', role: 'organizer' });
     const token = reg.body.token;
 
@@ -61,7 +61,7 @@ describe('Events API', () => {
   });
 
   test('Update non-existent event returns 404', async () => {
-    const email = `org-update-none-${Date.now()}@example.com`;
+    const email = `org-update-none-${Date.now()}@airtribe.com`;
     const reg = await request(app).post('/api/register').send({ name: 'Org4', email, password: 'pass', role: 'organizer' });
     const token = reg.body.token;
 
@@ -70,7 +70,7 @@ describe('Events API', () => {
   });
 
   test('Delete event by organizer', async () => {
-    const email = `org-delete-${Date.now()}@example.com`;
+    const email = `org-delete-${Date.now()}@airtribe.com`;
     const reg = await request(app).post('/api/register').send({ name: 'Org5', email, password: 'pass', role: 'organizer' });
     const token = reg.body.token;
 
@@ -86,9 +86,9 @@ describe('Events API', () => {
   });
 
   test('Only event owner can update/delete', async () => {
-    const regA = await request(app).post('/api/register').send({ name: 'OrgA', email: `orgaA-${Date.now()}@example.com`, password: 'pass', role: 'organizer' });
+    const regA = await request(app).post('/api/register').send({ name: 'OrgA', email: `orgaA-${Date.now()}@airtribe.com`, password: 'pass', role: 'organizer' });
     const tokenA = regA.body.token;
-    const regB = await request(app).post('/api/register').send({ name: 'OrgB', email: `orgaB-${Date.now()}@example.com`, password: 'pass', role: 'organizer' });
+    const regB = await request(app).post('/api/register').send({ name: 'OrgB', email: `orgaB-${Date.now()}@airtribe.com`, password: 'pass', role: 'organizer' });
     const tokenB = regB.body.token;
 
     const createRes = await request(app).post('/api/events').set('Authorization', `Bearer ${tokenA}`).send({ title: 'Owned', description: 'D', dateTime: new Date().toISOString() });

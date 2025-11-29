@@ -10,7 +10,7 @@ const emailService = require('../src/services/emailService');
 describe('Event registration', () => {
   test('Successful registration for an event', async () => {
     // create organizer
-    const org = await request(app).post('/api/register').send({ name: 'OrgReg', email: `orgreg-${Date.now()}@example.com`, password: 'p', role: 'organizer' });
+    const org = await request(app).post('/api/register').send({ name: 'OrgReg', email: `orgreg-${Date.now()}@airtribe.com`, password: 'p', role: 'organizer' });
     const orgToken = org.body.token;
 
     // create event
@@ -19,7 +19,7 @@ describe('Event registration', () => {
     const eventId = createRes.body.id;
 
     // create attendee and register
-    const att = await request(app).post('/api/register').send({ name: 'AttReg', email: `attreg-${Date.now()}@example.com`, password: 'p', role: 'attendee' });
+    const att = await request(app).post('/api/register').send({ name: 'AttReg', email: `attreg-${Date.now()}@airtribe.com`, password: 'p', role: 'attendee' });
     const attToken = att.body.token;
 
     const regRes = await request(app).post(`/api/events/${eventId}/register`).set('Authorization', `Bearer ${attToken}`).send();
@@ -30,12 +30,12 @@ describe('Event registration', () => {
   });
 
   test('Duplicate registration should fail', async () => {
-    const org = await request(app).post('/api/register').send({ name: 'OrgDup', email: `orgdup-${Date.now()}@example.com`, password: 'p', role: 'organizer' });
+    const org = await request(app).post('/api/register').send({ name: 'OrgDup', email: `orgdup-${Date.now()}@airtribe.com`, password: 'p', role: 'organizer' });
     const orgToken = org.body.token;
     const createRes = await request(app).post('/api/events').set('Authorization', `Bearer ${orgToken}`).send({ title: 'DupEvent', description: 'D', dateTime: new Date().toISOString() });
     const eventId = createRes.body.id;
 
-    const att = await request(app).post('/api/register').send({ name: 'AttDup', email: `attdup-${Date.now()}@example.com`, password: 'p', role: 'attendee' });
+    const att = await request(app).post('/api/register').send({ name: 'AttDup', email: `attdup-${Date.now()}@airtribe.com`, password: 'p', role: 'attendee' });
     const attToken = att.body.token;
 
     const r1 = await request(app).post(`/api/events/${eventId}/register`).set('Authorization', `Bearer ${attToken}`).send();
@@ -46,7 +46,7 @@ describe('Event registration', () => {
   });
 
   test('Registration to non-existent event returns 404', async () => {
-    const att = await request(app).post('/api/register').send({ name: 'AttNo', email: `attno-${Date.now()}@example.com`, password: 'p', role: 'attendee' });
+    const att = await request(app).post('/api/register').send({ name: 'AttNo', email: `attno-${Date.now()}@airtribe.com`, password: 'p', role: 'attendee' });
     const attToken = att.body.token;
 
     const res = await request(app).post(`/api/events/non-existent-id/register`).set('Authorization', `Bearer ${attToken}`).send();
@@ -54,7 +54,7 @@ describe('Event registration', () => {
   });
 
   test('Registration without token fails', async () => {
-    const org = await request(app).post('/api/register').send({ name: 'OrgNoTok', email: `orgnotok-${Date.now()}@example.com`, password: 'p', role: 'organizer' });
+    const org = await request(app).post('/api/register').send({ name: 'OrgNoTok', email: `orgnotok-${Date.now()}@airtribe.com`, password: 'p', role: 'organizer' });
     const createRes = await request(app).post('/api/events').set('Authorization', `Bearer ${org.body.token}`).send({ title: 'NoTok', description: 'D', dateTime: new Date().toISOString() });
     const eventId = createRes.body.id;
 
