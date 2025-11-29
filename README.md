@@ -52,17 +52,16 @@ event-sync-api/
 │  ├─ services/
 │  │  ├─ emailService.js
 │  │  └─ jwtService.js
-│  ├─ data/
-│  │  ├─ usersStore.js
-│  │  └─ eventsStore.js
-│  └─ tests/              # local test helpers and legacy tests
+│  └─ data/
+│     ├─ usersStore.js
+│     └─ eventsStore.js
+│                         # local test helpers and legacy tests
 ├─ tests/                 # main test suites (Jest + Supertest)
 │  ├─ auth.test.js
 │  ├─ events.test.js
 │  └─ registration.test.js
 ├─ package.json
-├─ README.md
-└─ context.md
+└─ README.md
 ```
 
 ---
