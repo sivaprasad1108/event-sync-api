@@ -320,9 +320,5 @@ Have ideas for improvements (like adding CI/CD, migrating to a real database, or
 
 # event-sync-api
 
-
-### Other Navigations
-| [API Docs](./API_DOCS.md) 
-
 ## 📄 Documentation
 - 👉 [API Documentation](./API_DOCS.md)
