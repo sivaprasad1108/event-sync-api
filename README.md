@@ -321,4 +321,4 @@ Have ideas for improvements (like adding CI/CD, migrating to a real database, or
 # event-sync-api
 
 ## 📄 Documentation
-- 👉 [COMPLETE API Documentation](./API_DOCS.md)
+- 👉 [Complete API Documentation](./API_DOCS.md)
