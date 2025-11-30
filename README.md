@@ -55,10 +55,10 @@ event-sync-api/
 │  └─ data/
 │     ├─ usersStore.js
 │     └─ eventsStore.js
-│                         # local test helpers and legacy tests
-├─ tests/                 # main test suites (Jest + Supertest)
-│  ├─ auth.test.js
-│  ├─ events.test.js
+│                         
+├─ tests/                 
+│  ├─ auth.test.js        # local test helpers and legacy tests
+│  ├─ events.test.js      # main test suites (Jest + Supertest)
 │  └─ registration.test.js
 ├─ package.json
 └─ README.md
