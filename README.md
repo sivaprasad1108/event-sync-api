@@ -319,3 +319,10 @@ This project is available under the MIT License.
 Have ideas for improvements (like adding CI/CD, migrating to a real database, or expanding features)? I’d love your feedback — reach me anytime at: siva47tv@gmail.com
 
 # event-sync-api
+
+
+### Other Navigations
+| [API Docs](./API_DOCS.md) 
+
+## 📄 Documentation
+- 👉 [API Documentation](./API_DOCS.md)
