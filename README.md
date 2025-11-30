@@ -105,7 +105,7 @@ SMTP_HOST=smtp.example.com
 SMTP_PORT=587
 SMTP_USER=your-email-username
 SMTP_PASS=your-email-password
-EMAIL_FROM=no-reply@airtribe.com
+EMAIL_FROM=no-reply@example.com
 ```
 
 - If no SMTP configuration is provided, the app falls back to Ethereal (a test SMTP service) for local development and tests.
@@ -169,7 +169,7 @@ All endpoints are mounted under `/api` (e.g. `/api/register`).
 Request:
 
 ```bash
-curl -X POST http://localhost:4000/api/register -H 'Content-Type: application/json' -d '{"name":"Alice","email":"alice@airtribe.com","password":"password","role":"organizer"}'
+curl -X POST http://localhost:4000/api/register -H 'Content-Type: application/json' -d '{"name":"sivaprasad","email":"sivaprasad@example.com","password":"password","role":"organizer"}'
 ```
 
 Response (201):
@@ -179,7 +179,7 @@ Response (201):
   "user": {
     "id": "uuid",
     "name": "sivaprasad",
-    "email": "sivaprasad@airtribe.com",
+    "email": "sivaprasad@example.com",
     "role": "organizer",
     "createdAt": "2025-01-01T12:34:56.789Z"
   },
@@ -192,14 +192,14 @@ Response (201):
 Request:
 
 ```bash
-curl -X POST http://localhost:4000/api/login -H 'Content-Type: application/json' -d '{"email":"alice@airtribe.com","password":"password"}'
+curl -X POST http://localhost:4000/api/login -H 'Content-Type: application/json' -d '{"email":"sivaprasad@example.com","password":"password"}'
 ```
 
 Response (200):
 
 ```json
 {
-  "user": { "id":"...", "email":"sivaprasad@airtribe.com", "name":"sivaprasad", "role":"organizer", "createdAt":"..." },
+  "user": { "id":"...", "email":"sivaprasad@example.com", "name":"sivaprasad", "role":"organizer", "createdAt":"..." },
   "token": "<jwt-token>"
 }
 ```

@@ -37,7 +37,7 @@ exports.sendRegistrationEmail = async (userEmail, eventData) => {
   const transporter = await getTransporter();
 
   const info = await transporter.sendMail({
-    from: process.env.EMAIL_FROM || 'no-reply@airtribe.com',
+    from: process.env.EMAIL_FROM || 'no-reply@example.com',
     to: userEmail,
     subject: 'Event Registration Confirmation',
     text: `You are registered for ${eventData.title} at ${eventData.dateTime}`,

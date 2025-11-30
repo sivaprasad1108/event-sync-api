@@ -3,7 +3,7 @@ const app = require('../src/app');
 
 describe('Auth APIs', () => {
   test('Successful registration', async () => {
-    const email = `test-${Date.now()}@airtribe.com`;
+    const email = `test-${Date.now()}@example.com`;
     const res = await request(app)
       .post('/api/register')
       .send({ name: 'Sivaprasad', email, password: 'password', role: 'organizer' });
@@ -17,7 +17,7 @@ describe('Auth APIs', () => {
   });
 
   test('Registration with existing email returns 400', async () => {
-    const email = `duplicate-${Date.now()}@airtribe.com`;
+    const email = `duplicate-${Date.now()}@example.com`;
     await request(app).post('/api/register').send({ name: 'Bob', email, password: 'password', role: 'attendee' });
     const res = await request(app).post('/api/register').send({ name: 'Bob2', email, password: 'password', role: 'attendee' });
     expect(res.status).toBe(400);
@@ -25,7 +25,7 @@ describe('Auth APIs', () => {
   });
 
   test('Successful login', async () => {
-    const email = `login-${Date.now()}@airtribe.com`;
+    const email = `login-${Date.now()}@example.com`;
     const password = 'mypassword';
     await request(app).post('/api/register').send({ name: 'Carl', email, password, role: 'attendee' });
     const loginRes = await request(app).post('/api/login').send({ email, password });
@@ -36,7 +36,7 @@ describe('Auth APIs', () => {
   });
 
   test('Login with wrong password returns 401', async () => {
-    const email = `wrongpass-${Date.now()}@airtribe.com`;
+    const email = `wrongpass-${Date.now()}@example.com`;
     await request(app).post('/api/register').send({ name: 'Deb', email, password: 'realpass', role: 'attendee' });
     const res = await request(app).post('/api/login').send({ email, password: 'badpass' });
     expect(res.status).toBe(401);
@@ -44,7 +44,7 @@ describe('Auth APIs', () => {
   });
 
   test('Login with unknown email returns 401', async () => {
-    const res = await request(app).post('/api/login').send({ email: 'unknown@airtribe.com', password: 'x' });
+    const res = await request(app).post('/api/login').send({ email: 'unknown@example.com', password: 'x' });
     expect(res.status).toBe(401);
   });
 });
